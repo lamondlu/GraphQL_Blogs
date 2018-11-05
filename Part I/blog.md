@@ -1,5 +1,7 @@
 # ASP.NET Core中使用GraphQL - 第一章 Hello World
 
+![](C:\Users\Lamond Lu\OneDrive\博客\GraphQL\Part I\images\banner-8-1100x550.jpg)
+
 ## 前言
 
 你是否已经厌倦了REST风格的API? 让我们来聊一下GraphQL。 GraphQL提供了一种声明式的方式从服务器拉取数据。你可以从GraphQL官网中了解到GraphQL的所有优点。在这一系列博客中，我将展示如何在ASP.NET Core中集成GraphQL, 并使用GraphQL作为你的API查询语言。
@@ -142,3 +144,5 @@ app.Run(async (context) =>
 ## 总结
 
 本篇我们只是接触了GraphQL的一些皮毛，你可能会对GraphQL声明式行为有很多问题，没有关系，后续博客中，我们慢慢解开GraphQL的面纱。下一篇我们将介绍如何创建一个中间件(Middleware)
+
+[本篇源代码：https://github.com/lamondlu/GraphQL_Blogs](https://github.com/lamondlu/GraphQL_Blogs)
