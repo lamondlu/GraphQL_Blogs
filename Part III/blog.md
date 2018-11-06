@@ -129,3 +129,7 @@ public void Configure(IApplicationBuilder app,
 
 现在我们重新使用POSTMAN来测试。
 
+![1541508783907](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1541508783907.png)
+
+结果正确输出了。
+

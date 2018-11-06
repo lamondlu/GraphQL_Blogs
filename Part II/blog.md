@@ -6,6 +6,8 @@
 
 ![](C:\Users\Lamond Lu\OneDrive\博客\GraphQL\Part II\images\banner-8-1100x550.jpg)
 
+### 中间件
+
 如果你熟悉ASP.NET Core的中间件，你可能会注意到之前的博客中我们已经使用了一个中间件，
 
 ```c#
@@ -39,6 +41,8 @@ app.Run(async (context) =>
 > 来源： [Microsoft Documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#what-is-middleware)
 
 实际上中间件是一个委托，或者更精确的说是一个请求委托(Request Delegate)。 正如他的名字一样，中间件会处理请求，并决定是否将他委托到应用程序管道中的下一个中间件中。在我们前面的例子中，我们使用<code>IApplicationBuilder</code>类的<code>Run()</code>方法配置了一个请求委托。
+
+### 使用动态查询体替换硬编码查询体
 
 在我们之前的例子中，中间件中的代码非常简单，它仅是返回了一个固定查询的结果。然而在现实场景中，查询应该是动态的，因此我们必须从请求中读取查询体。
 
@@ -132,4 +136,13 @@ app.Run(async (context) =>
 });
 ```
 
-现在我们可以使用POSTMAN来创建一个POST请求
+### 最终效果
+
+现在我们可以使用POSTMAN来创建一个POST请求, 请求结果如下：
+
+![](.\images\1541413123554.png)
+
+结果正确返回了。
+
+[本篇源代码： https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20II](https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20II)
+
