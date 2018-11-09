@@ -6,7 +6,7 @@ namespace chapter1
 
     public class HelloWorldQuery : ObjectGraphType
     {
-        public HelloWorldQuery()
+        public HelloWorldQuery(IDataStore dataStore)
         {
             Field<StringGraphType>(
                 name: "hello",
@@ -24,7 +24,7 @@ namespace chapter1
                 resolve: context =>
                 {
                     var barcode = context.GetArgument<string>("barcode");
-                    return new DataSource().GetItemByBarcode(barcode);
+                    return dataStore.GetItemByBarcode(barcode);
                 }
             );
         }
