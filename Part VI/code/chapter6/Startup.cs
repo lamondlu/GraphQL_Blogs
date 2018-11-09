@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace chapter1
 {
@@ -28,12 +27,12 @@ namespace chapter1
                 option.UseSqlServer(Configuration.GetConnectionString("SampleDB"));
             });
 
+            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+            services.AddSingleton<IDocumentWriter, DocumentWriter>();
+
             services.AddScoped<IDataStore, DataStore>();
             services.AddScoped<HelloWorldQuery>();
             services.AddScoped<ISchema, HelloWorldSchema>();
-            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-            services.AddSingleton<IDocumentWriter, DocumentWriter>();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
