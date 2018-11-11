@@ -15,7 +15,7 @@ ASP.NET Core中使用GraphQL
 
 ---
 
-在前面几篇中，我们已经介绍了如何使用GraphQL获取数据。那么如何使用GraphQL进行数据的添加，删除，修改操作的。这里我们需要引入GraphQL中的<code>Mutation</code>。
+在前面几篇中，我们已经介绍了如何使用GraphQL中的<code>query</code>字段获取数据。那么如何使用GraphQL进行数据的添加，删除，修改操作呢？。这里我们需要引入GraphQL中的<code>mutation</code>。
 
 我们继续编写新代码之前，我们需要先整理一下当前的项目代码。这里我们将<code>HelloWorldQuery</code>类改名为<code>InventoryQuery</code>类, 并将<code>HelloWorldSchema</code>类改名为<code>InventorySchema</code>。然后我们将<code>hello</code>和<code>howdy</code>两个字段移除掉。
 
@@ -60,6 +60,17 @@ public class ItemInputType : InputObjectGraphType
 ```
 
 为了将新的货物记录添加到数据库，我们还需要修改<code>IDataStore</code>接口，添加一个<code>AddItem</code>的方法，并在<code>DataStore</code>类中实现它。
+
+##### IDataStore
+
+```c#
+public interface IDataStore
+{
+	IEnumerable<Item> GetItems();
+	Item GetItemByBarcode(string barcode);
+	Task<Item> AddItem(Item item);
+}
+```
 
 ##### DataStore
 
@@ -114,7 +125,12 @@ mutation {
 }
 ```
 
-这段代码的意思是，我们将调用<code>createItem</code>的<code>mutation</code>, 将item保存到数据库，并会返回新增item的<code>title</code>和<code>barcode</code>属性。当然你也可以把添加的item对象放到<code>Query Variables</code>窗口中。
+这段代码的意思是，我们将调用<code>createItem</code>的<code>mutation</code>, 将item保存到数据库，并会返回新增item的<code>title</code>和<code>barcode</code>属性。
 
 ![1541860029324](C:\Users\Administrator\OneDrive\博客\GraphQL\Part VII\images\1541860029324.png)
 
+当然你也可以把添加的item对象放到<code>Query Variables</code>窗口中, 得到的结果是一样的
+
+![1541938898275](C:\Users\Administrator\OneDrive\博客\GraphQL\Part VII\images\1541938898275.png)
+
+[本文源代码： https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20VII](https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20VII)
