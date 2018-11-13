@@ -16,5 +16,9 @@ namespace chapter1
         Task<Customer> GetCustomerByIdAsync(int customerId);
 
         Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int customerId);
+
+        Task<Order> AddOrderAsync(Order order);
+
+        Task<Customer> AddCustomerAsync(Customer customer);
     }
 }
