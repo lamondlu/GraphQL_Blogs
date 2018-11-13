@@ -2,6 +2,7 @@
 
 namespace chapter1.Models
 {
+    [Table("OrderItems")]
     public class OrderItem
     {
         public int Id { get; set; }

@@ -21,6 +21,10 @@ namespace chapter1
 
         Task<Order> GetOrderByIdAsync(int orderId);
 
+        Task<Order> AddOrderAsync(Order order);
+
+        Task<Customer> AddCustomerAsync(Customer customer);
+
         Task<OrderItem> AddOrderItemAsync(OrderItem orderItem);
 
         Task<IEnumerable<OrderItem>> GetOrderItemByOrderIdAsync(int orderId);

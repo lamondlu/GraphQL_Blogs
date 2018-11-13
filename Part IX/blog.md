@@ -45,7 +45,7 @@ public class OrderItem
 }
 ```
 
-创建完成之后，我们还需要修改<code>Order</code>和<code>Item</code>实体
+创建完成之后，我们还需要修改<code>Order</code>和<code>Item</code>实体, 添加他们与<code>OrderItem</code>之间的关系
 
 ##### Order
 
@@ -219,8 +219,16 @@ services.AddScoped<OrderItemInputType>();
 
 以上就是所有的代码修改。现在我们启动项目
 
+首先我们先为之前添加的订单1, 添加两个物品
 
 
 
+![1542146751163](C:\Users\Administrator\OneDrive\博客\GraphQL\Part IX\images\1542146751163.png)
 
-[本文源代码： https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20IX](https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20V)
+![1542146790397](C:\Users\Administrator\OneDrive\博客\GraphQL\Part IX\images\1542146790397.png)
+
+然后我们来调用查询Order的<code>query</code>, 结果中订单中物品正确显示了。
+
+![1542146907622](C:\Users\Administrator\OneDrive\博客\GraphQL\Part IX\images\1542146907622.png)
+
+[本文源代码： https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20IX](https://github.com/lamondlu/GraphQL_Blogs/tree/master/Part%20IX)

@@ -1,13 +1,14 @@
-﻿using GraphQL.Types;
+﻿using GraphQL;
+using GraphQL.Types;
 
 namespace chapter1
 {
     public class InventorySchema : Schema
     {
-        public InventorySchema(InventoryQuery query, InventoryMutation mutation)
+        public InventorySchema(IDependencyResolver resolver) : base(resolver)
         {
-            Query = query;
-            Mutation = mutation;
+            Query = resolver.Resolve<InventoryQuery>();
+            Mutation = resolver.Resolve<InventoryMutation>();
         }
     }
 }

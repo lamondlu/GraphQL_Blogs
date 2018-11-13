@@ -8,7 +8,7 @@ namespace chapter1
         {
             Name = "OrderItemInput";
             Field<NonNullGraphType<IntGraphType>>("quantity");
-            Field<NonNullGraphType<IntGraphType>>("itemId");
+            Field<NonNullGraphType<StringGraphType>>("barcode");
             Field<NonNullGraphType<IntGraphType>>("orderId");
         }
     }

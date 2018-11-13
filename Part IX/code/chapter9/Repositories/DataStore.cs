@@ -69,6 +69,20 @@ namespace chapter1
             return await _context.Orders.FindAsync(orderId);
         }
 
+        public async Task<Order> AddOrderAsync(Order order)
+        {
+            var addedOrder = await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
+            return addedOrder.Entity;
+        }
+
+        public async Task<Customer> AddCustomerAsync(Customer customer)
+        {
+            var addedCustomer = await _context.Customers.AddAsync(customer);
+            await _context.SaveChangesAsync();
+            return addedCustomer.Entity;
+        }
+
         public async Task<OrderItem> AddOrderItemAsync(OrderItem orderItem)
         {
             var addedOrderItem = await _context.OrderItems.AddAsync(orderItem);

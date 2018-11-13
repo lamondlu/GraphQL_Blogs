@@ -36,11 +36,11 @@ namespace chapter1
             services.AddScoped<InventoryQuery>();
             services.AddScoped<ISchema, InventorySchema>();
             services.AddScoped<ItemType>();
+            services.AddScoped<OrderType>();
             services.AddScoped<ItemInputType>();
             services.AddScoped<InventoryMutation>();
             services.AddScoped<CustomerType>();
             services.AddScoped<CustomerInputType>();
-            services.AddScoped<OrderType>();
             services.AddScoped<OrderInputType>();
             services.AddScoped<OrderItemType>();
             services.AddScoped<OrderItemInputType>();
