@@ -1,5 +1,7 @@
 ﻿using chapter1.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace chapter1
@@ -28,5 +30,7 @@ namespace chapter1
         Task<OrderItem> AddOrderItemAsync(OrderItem orderItem);
 
         Task<IEnumerable<OrderItem>> GetOrderItemByOrderIdAsync(int orderId);
+
+        Task<IDictionary<int, Customer>> GetCustomersByIdAsync(IEnumerable<int> customerIds, CancellationToken token);
     }
 }

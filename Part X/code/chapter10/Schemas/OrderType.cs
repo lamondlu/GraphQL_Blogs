@@ -1,6 +1,7 @@
 ﻿
 using chapter1.Models;
 using chapter1.Schemas;
+using GraphQL.DataLoader;
 using GraphQL.Types;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ namespace chapter1
 {
     public class OrderType : ObjectGraphType<Order>
     {
-        public OrderType(IDataStore dataStore)
+        public OrderType(IDataStore dataStore, IDataLoaderContextAccessor accessor)
         {
             Field(o => o.Tag);
             Field(o => o.CreatedAt);
@@ -16,7 +17,9 @@ namespace chapter1
                 .Name("Customer")
                 .ResolveAsync(ctx =>
                 {
-                    return dataStore.GetCustomerByIdAsync(ctx.Source.CustomerId);
+                    var customersLoader = accessor.Context.GetOrAddBatchLoader<int, Customer>("GetCustomersById",
+                        dataStore.GetCustomersByIdAsync);
+                    return customersLoader.LoadAsync(ctx.Source.CustomerId);
                 });
 
             Field<ListGraphType<OrderItemType>, IEnumerable<OrderItem>>()

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace chapter1
@@ -95,6 +96,11 @@ namespace chapter1
             return await _context.OrderItems
                 .Where(o => o.OrderId == orderId)
                 .ToListAsync();
+        }
+
+        public async Task<IDictionary<int, Customer>> GetCustomersByIdAsync(IEnumerable<int> customerIds, CancellationToken token)
+        {
+            return await _context.Customers.Where(i => customerIds.Contains(i.CustomerId)).ToDictionaryAsync(x => x.CustomerId);
         }
     }
 }
